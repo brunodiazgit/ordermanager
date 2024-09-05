@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+import { Link } from "react-router-dom"
 
 function OrderForm({formValue, onChange, onSubmit }) {
     return (
@@ -19,7 +19,7 @@ function OrderForm({formValue, onChange, onSubmit }) {
                     <label htmlFor="cliente">Cliente</label>
                     <input className="h-10 rounded-lg border-2 border-black w-34" type="text" id="cliente" onChange={onChange} value={formValue.cliente} />
                 </div>
-                <button className=" text-white h-10 w-12 bg-red-800 rounded-md ">+</button>
+                <Link to={'/customer'}><button className=" text-white h-10 w-12 bg-red-800 rounded-md ">+</button></Link>
             </div>
 
             <div className="flex flex-col">

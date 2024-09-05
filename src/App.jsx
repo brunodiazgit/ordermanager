@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import OrderFormContainer from './components/OrderFormContainer'
 import Workshop from './components/Workshop'
 import Queries from './components/Queries'
+import Customer from './components/Customer'
 import {
   BrowserRouter,
   Routes,
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={<OrderFormContainer/>} />
             <Route path="/workshop" element={<Workshop/>} />
             <Route path="/queries" element={<Queries/>} />
+            <Route path="/customer" element={<Customer/>} />
           </Route>
         </Routes>
       </BrowserRouter>

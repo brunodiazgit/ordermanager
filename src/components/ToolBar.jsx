@@ -1,7 +1,9 @@
+
+
 function ToolBar() {
     return (
         <header className="flex justify-around items-center min-h-20 bg-gray-900">
-            <div>
+            <div className="flex">
                 <h1 className="text-white text-2xl">OrderManager</h1>
             </div>
             <nav >
