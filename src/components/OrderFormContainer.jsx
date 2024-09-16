@@ -1,33 +1,22 @@
 import { useState, useEffect } from "react"
-import OrderForm from "./OrderForm";
+import OrderForm from "./OrderForm"
+import { useForm } from "../context/FormContext"
 
-
-const initialFormValue = {
-    orden: "",
-    id: "",
-    estado: "Pendiente",
-    sub_estado: "En reparación",
-    ubicacion: "Taller",
-    cliente: "",
-    fecha: "",
-    serie: "",
-    dispositivo: "",
-    marca: "",
-    modelo: "",
-    falla: "",
-}
 
 function OrderFormContainer() {
-    const [formValue, setFormValue] = useState(initialFormValue);
+    const {formValue, updateFormValue, initialFormValue} = useForm()
     const [formValues, setFormValues] = useState([])
-
-
     const handleChange = (e) => {
-        const { id, value } = e.target;
-        setFormValue(prevState => ({
-            ...prevState,
-            [id]: value
-        }))
+        const { id, value} = e.target
+
+        if (id.startsWith("precio")) {
+            const index = parseInt(id.replace("precio", ""), 10)
+            const newPrecios = [...formValue.precios]
+            newPrecios[index] = parseFloat(value) || 0
+            updateFormValue({ precios: newPrecios })
+        } else {
+            updateFormValue({ [id]: value })
+        }
     }
 
     const handleSubmit = (e) => {
@@ -35,9 +24,9 @@ function OrderFormContainer() {
 
         // Añadir el nuevo objeto al array de formValues
         setFormValues(prevValues => [...prevValues, formValue])
-        
+
         // Limpiar el formulario después de añadir el objeto
-        setFormValue(initialFormValue)
+        updateFormValue(initialFormValue)
     }
 
     useEffect(() => {
@@ -45,11 +34,13 @@ function OrderFormContainer() {
     }, [formValues]);
 
     return (
-        <OrderForm
-        formValue={formValue}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-        />
+        <>
+            <OrderForm
+                formValue={formValue}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+            />
+        </>
     )
 }
 

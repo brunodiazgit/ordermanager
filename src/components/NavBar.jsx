@@ -1,18 +1,26 @@
 import { Link } from "react-router-dom"
 
 function NavBar() {
+
+
     return (
-        <header className="flex justify-around items-center mt-5">
-            <nav>
-                <ul className="flex gap-40 text-white text-lg bg-red-800 rounded-lg p-5">
+        <header className="flex justify-around items-center min-h-20 bg-gray-900">
+            <div className="flex">
+                <h1 className="text-white text-2xl">OrderManager</h1>
+            </div>
+            <nav >
+                <ul className="flex gap-10 text-white text-lg">
                     <li>
-                        <Link to={'/'}>Entrada de Datos</Link>
+                        <Link to={'/'}>Ordenes</Link>
                     </li>
                     <li>
-                        <Link to={'/workshop'}>Info Taller</Link>
+                        <Link to={'/queries'}>Busquedas</Link>
                     </li>
                     <li>
-                        <Link to={'/queries'}>Búsquedas</Link>
+                        <Link to={'/'}>Clientes</Link>
+                    </li>
+                    <li>
+                        <Link to={'/'}>Empleados</Link>
                     </li>
                 </ul>
             </nav>
